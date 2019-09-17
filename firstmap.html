@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> Let's try something </title>
+		<link rel="stylesheet" href="main.css"/>
+		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" />
+		
+    </head>
+	<body>
+		<div id="map"></div>
+		<script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-hash/0.2.1/leaflet-hash.js"></script>
+		<script>
+			//initialize the map         
+			  var map = L.map('map').setView([51.98514, 5.66647], 15);
+			  
+			var hash = new L.Hash(map);
+			
+			  //Create baselayer - tiles         
+			  var backgroundMap = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',{
+				attribution: '<a href="http://openstreetmap.org">OpenStreetMap</a>contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
+				maxZoom: 19
+				}
+			  );
+			 
+			  backgroundMap.addTo(map);
+			  
+			var forum = L.marker([51.98514, 5.66647]).addTo(map);
+			var thuisthuis = L.marker([51.8895751, 4.95000601]).addTo(map);
+			var WSR = L.marker([51.95737102, 5.64815819]).addTo(map);
+			var thuis = L.marker([51.9669271, 5.66347629]).addTo(map);
+			  
+			var popup1 = "forum building";
+			forum.bindPopup(popup1); 
+			var popup2 = "parents live here";
+			thuisthuis.bindPopup(popup2);
+			var popup3 = "I live here";
+			thuis.bindPopup(popup3);
+			var popup4 = "This is were I row";
+			WSR.bindPopup(popup4);
+			
+			var circle =  L.circle([51.9669271, 5.66347629], 1000, {
+			  color: 'red',
+			  fillColor: '#f03',
+			  fillOpacity: 0.3
+			}).addTo(map);
+			
+			var polygon = L.polygon(
+			[[51.9895751, 4.85000601],
+			[51.9895751, 5.05000601],
+			[51.7895751, 5.05000601],
+			[51.7895751, 4.85000601]]).addTo(map);
+		</script>
+	</body>
+</html>
